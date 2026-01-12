@@ -6,7 +6,7 @@ from pydantic import AnyHttpUrl, EmailStr, HttpUrl, PostgresDsn, validator, Conf
 
 logging.basicConfig(level=logging.INFO)
 
-PROJECT_NAME = 'api-rcd'
+PROJECT_NAME = ''#SWAGER-NAME
 
 class AsyncPostgresDsn(PostgresDsn):
     allowed_schemes = {"postgres+asyncpg", "postgresql+asyncpg"}
@@ -14,14 +14,14 @@ class AsyncPostgresDsn(PostgresDsn):
 class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     # GAFSACOMM IP
-    API_DOMAIN_SSO: str = "http://10.110.161.240:8002" ## GAFSACOMM IP
-    API_DOMAIN: str = "http://10.110.161.240:8000"
+    API_DOMAIN_SSO: str = "http://:8002" ##ADD-YOUR-IP
+    API_DOMAIN: str = "http://:8000"#ADD-YOUR-IP
     SECRET_KEY: str = secrets.token_urlsafe(32)
     # ! CREAR NUEVA EXPIRACIÓN PARA QUE SEA CORTA
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 8
     JOB_ACCESS_TOKEN_EXPIRE_MINUTES: int = 1
     SERVER_NAME: str
-    SERVER_HOST: AnyHttpUrl = "10.110.161.240"
+    SERVER_HOST: AnyHttpUrl = ""#ADD-YOUR-IP
     BACKEND_CORS_ORIGINS: List[Union[AnyHttpUrl, str]] = []
     TEST_MODE: bool = False
     PROFILE_QUERY_MODE: bool = False
